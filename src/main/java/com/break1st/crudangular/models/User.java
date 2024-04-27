@@ -27,24 +27,24 @@ public class User {
   private Long id;
 
   @Column(name = "nome", nullable = false, length = 100)
-  @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
+  @NotEmpty()
   private String nome;
 
   @Column(name = "apelido", nullable = false, length = 100)
-  @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
+  @NotEmpty()
   private String apelido;
 
   @Column(name = "time", nullable = false, length = 100)
-  @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
+  @NotEmpty()
   private String time;
 
   @Column(name = "cpf", nullable = false, length = 11)
-  @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
-  @CPF(groups = { CreateUser.class, UpdateUser.class })
+  @NotEmpty()
+  @CPF()
   private String cpf;
 
   @Column(name = "hobbie", nullable = false, length = 100)
-  @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
+  @NotEmpty()
   private String hobbie;
 
   @ManyToOne

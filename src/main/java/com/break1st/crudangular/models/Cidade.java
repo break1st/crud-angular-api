@@ -6,6 +6,9 @@ import java.util.Objects;
 
 import org.springframework.scheduling.config.Task;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,14 +30,15 @@ public class Cidade {
   private Long id;
 
   @Column(name = "cidade", nullable = false, length = 100)
-  @NotEmpty(groups = {CreateCity.class, UpdateCity.class})
+  @NotEmpty()
   private String cidade;
 
   @Column(name = "estado", nullable = false, length = 100)
-  @NotEmpty(groups = {CreateCity.class, UpdateCity.class})
+  @NotEmpty()
   private String estado;
 
   @OneToMany(mappedBy = "cidade")
+  @JsonProperty(access = Access.WRITE_ONLY)
   private List<User> users = new ArrayList<User>();
 
   public Cidade() {

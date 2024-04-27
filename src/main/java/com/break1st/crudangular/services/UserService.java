@@ -1,8 +1,10 @@
 package com.break1st.crudangular.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.break1st.crudangular.models.Cidade;
 import com.break1st.crudangular.models.User;
@@ -10,6 +12,7 @@ import com.break1st.crudangular.repositories.UserRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class UserService {
   
   @Autowired
@@ -22,6 +25,10 @@ public class UserService {
     Optional<User> user = this.userRepository.findById(id);
     return user.orElseThrow(() -> new RuntimeException(
         "Usuário não encontrado! ID: " + id));
+  }
+
+  public List<User> findAll() {
+    return this.userRepository.findAll();
   }
 
   @Transactional

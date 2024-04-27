@@ -2,6 +2,7 @@ package com.break1st.crudangular.services;
 
 import java.util.Optional;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,10 @@ public class CidadeService {
     Optional<Cidade> cidade = this.cidadeRepository.findById(id);
     return cidade.orElseThrow(() -> new RuntimeException(
         "Tarefa não encontrada! ID: " + id));
+  }
+
+  public List<Cidade> findAll() {
+    return this.cidadeRepository.findAll();
   }
 
   @Transactional
