@@ -37,6 +37,9 @@ public class Cidade {
   @NotEmpty()
   private String estado;
 
+  @Column(name = "habitantes", nullable = false)
+  private Integer habitantes;
+
   @OneToMany(mappedBy = "cidade")
   @JsonProperty(access = Access.WRITE_ONLY)
   private List<User> users = new ArrayList<User>();
@@ -44,10 +47,11 @@ public class Cidade {
   public Cidade() {
   }
 
-  public Cidade(Long id, String cidade, String estado) {
+  public Cidade(Long id, String cidade, String estado, Integer habitantes) {
     this.id = id;
     this.cidade = cidade;
     this.estado = estado;
+    this.habitantes = habitantes;
   }
 
   public Long getId() {
@@ -72,6 +76,14 @@ public class Cidade {
 
   public void setEstado(String estado) {
     this.estado = estado;
+  }
+
+  public Integer getHabitantes() {
+    return habitantes;
+  }
+
+  public void setHabitantes(Integer habitantes) {
+    this.habitantes = habitantes;
   }
 
   public List<User> getUsers() {
@@ -100,7 +112,8 @@ public class Cidade {
     return Objects.equals(this.id, cidade.id)
         && Objects.equals(this.cidade, cidade.cidade)
         && Objects.equals(this.estado, cidade.estado)
-        && Objects.equals(this.users, cidade.users);
+        && Objects.equals(this.users, cidade.users)
+        && Objects.equals(this.habitantes, cidade.habitantes);
   }
 
   @Override
