@@ -47,8 +47,7 @@ public class UserService {
     Cidade cidade = this.cidadeService.findById(user.getCidade().getId());
     User updateUser = user;
     updateUser.setCidade(cidade);
-    updateUser = this.userRepository.save(updateUser);
-    return updateUser;
+    return this.userRepository.save(updateUser);
   }
 
   public void delete(Long id) {

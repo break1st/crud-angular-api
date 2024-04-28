@@ -48,7 +48,7 @@ public class User {
   private String hobbie;
 
   @ManyToOne
-  @JoinColumn(name = "cidade_id", nullable = false, updatable = false)
+  @JoinColumn(name = "cidade_id", nullable = false)
   private Cidade cidade;
 
   public User() {
